@@ -27,5 +27,10 @@ urlpatterns = [
     path('blog.html',blog),
     path('contact-us.html',contact_us),
     path('project-item.html',project_item),
-    path('blog-item.html',blog_item)
+    path('blog-item.html',blog_item),
+    path('healthy-diet',Intelligence_Assistant),
+    path('digital-optimization',Optimization_Programme),
+    path('optimization-report',Digital_Presentation),
+    path('diet-dairy',index_single_page),
+    path('',index),
 ]

@@ -5,1003 +5,544 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Impact By Distinctive Themes</title>
+    <title>Diet Dairy食品营养素查询工具-吃啥日记</title>
+    <meta name="keywords" content="健康饮食,吃什么,饮食健康,美食推荐,营养查询,食品营养查询" />
+    <meta name="description" content="该应用提供多种食物的营养素查询、自动生成每日营养素摄入达标情况及根据用户个体差异提供健康饮食推荐等功能。" />
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/font-awesome.min.css" rel="stylesheet">
     <link href="../static/css/pe-icons.css" rel="stylesheet">
     <link href="../static/css/prettyPhoto.css" rel="stylesheet">
     <link href="../static/css/animate.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet">
-    <script src="../static/js/jquery.js"></script>
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="../static/images/ico/favicon.ico">
-    <link rel="apple-touch-icon" sizes="144x144" href="../static/images/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../static/images/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../static/images/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" href="../static/images/ico/apple-touch-icon-57x57.png">
-
+{#    <script src="../static/js/jquery.js"></script>#}
     <script type="text/javascript">
-    jQuery(document).ready(function($){
-	'use strict';
-      	jQuery('body').backstretch([
-	        "http://placehold.it/800x600",
-	        "http://placehold.it/800x600",
-	        "http://placehold.it/800x600"
-	    ], {duration: 5000, fade: 500});
-
-		
-    });
+    document.write("<scr"+"ipt src=\"../static/js/jquery.js\"></sc"+"ript>")
     </script>
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.js"></script>
+    <script src="../static/js/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/left2.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/144.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/72.png">
+    <link rel="apple-touch-icon" href="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/57.png">
+
+    <link href="../static/css/UI.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{#    <script src="../static/js/jquery-1.10.2.js"></script>#}
+    <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"../static/js/jquery-1.10.2.js\"></sc"+"ript>")
+    </script>
+
+    <script>
+        $(function() {
+            var name = [];
+            var mJson=$.ajax({url:"../static/js/food.json",async:false});
+            var temp=JSON.parse(mJson.responseText);
+            for(var i = 0 ; i < temp.length ; i++){
+                name[i] = (temp[i].name)
+            }
+            $( "#tags" ).autocomplete({
+                source: name
+            });
+        });
+    </script>
+
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a48519655859f69084600def79d0e358";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+
+ $(function(){
+    $(".pic").click(function(){
+      var _this = $(this);//将当前的pimg元素作为_this传入函数
+      imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
+    });
+  });
+  function imgShow(outerdiv, innerdiv, bigimg, _this){
+    var src = _this.attr("src");//获取当前点击的pimg元素中的src属性
+    $(bigimg).attr("src", src);//设置#bigimg元素的src属性
+      /*获取当前点击图片的真实大小，并显示弹出层及大图*/
+    $("<img/>").attr("src", src).load(function(){
+      var windowW = $(window).width();//获取当前窗口宽度
+      var windowH = $(window).height();//获取当前窗口高度
+      var realWidth = this.width;//获取图片真实宽度
+      var realHeight = this.height;//获取图片真实高度
+      var imgWidth, imgHeight;
+      var scale = 0.8;//缩放尺寸，当图片真实宽度和高度大于窗口宽度和高度时进行缩放
+      if(realHeight>windowH*scale) {//判断图片高度
+        imgHeight = windowH*scale;//如大于窗口高度，图片高度进行缩放
+        imgWidth = imgHeight/realHeight*realWidth;//等比例缩放宽度
+        if(imgWidth>windowW*scale) {//如宽度扔大于窗口宽度
+          imgWidth = windowW*scale;//再对宽度进行缩放
+        }
+      } else if(realWidth>windowW*scale) {//如图片高度合适，判断图片宽度
+        imgWidth = windowW*scale;//如大于窗口宽度，图片宽度进行缩放
+              imgHeight = imgWidth/realWidth*realHeight;//等比例缩放高度
+      } else {//如果图片真实高度和宽度都符合要求，高宽不变
+        imgWidth = realWidth;
+        imgHeight = realHeight;
+      }
+          $(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放
+      var w = (windowW-imgWidth)/2;//计算图片与窗口左边距
+      var h = (windowH-imgHeight)/2;//计算图片与窗口上边距
+      $(innerdiv).css({"top":h, "left":w});//设置#innerdiv的top和left属性
+      $(outerdiv).fadeIn("fast");//淡入显示#outerdiv及.pimg
+    });
+    $(outerdiv).click(function(){//再次点击淡出消失弹出层
+      $(this).fadeOut("fast");
+    });
+  }
+
+</script>
+
+
 </head><!--/head-->
 <body>
 <div id="preloader"></div>
-    <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
-    <div id="search-wrapper">
-        <div class="container">
-            <input id="search-box" placeholder="Search">
-        </div>
-    </div>
+    <header class="navbar navbar-inverse navbar-fixed-top " role="banner">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html"><h1><span class="pe-7s-gleam bounce-in"></span> IMPACT</h1></a>
+                 <a class="navbar-brand" href="index.html"><h1>
+                     <span>
+                         <img src="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/left2.png" style="height:22px;width:22px;margin-top:-5px;" >      SHINE
+                     </span></h1>
+                 </a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about-us">About Us</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><span class="search-trigger"><i class="fa fa-search"></i></span></li>
+                    <li><a href="index">首  页</a></li>
+                    <li><a href="">免 费 体 验</a></li>
+                    <li><a href="index.html#services">产 品 及 服 务</a></li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">案 例 展 示 <i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="healthy-diet">智能健康饮食助手API</a></li>
+                            <li><a href="digital-optimization">数字化品牌口碑优化方案</a></li>
+                            <li><a href="optimization-report">产品推广服务及数字化报告</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#services">关 于 我 们</a></li>
                 </ul>
             </div>
         </div>
     </header><!--/header-->
 
-    <section id="main-slider" class="no-margin">
-        <div class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="carousel-content center centered">
-                                	<span class="home-icon pe-7s-gleam bounce-in"></span>
-                                    <h2 class="boxed animation animated-item-1 fade-down">WE GONNA HELP YOU MAKE AN IMPACT</h2>
-                                    <p class="boxed animation animated-item-2 fade-up">Our expertise will guide you to success. Without Fail.</p>
-                                    <br>
-                                    <a class="btn btn-md animation bounce-in" href="#">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/.item-->
-            </div><!--/.carousel-inner-->
-        </div><!--/.carousel-->
-    </section><!--/#main-slider-->
-
     <div id="content-wrapper">
         <section id="services" class="white">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="center gap fade-down section-heading">
-                            <h2 class="main-title">Stuff We Do</h2>
-                            <hr>
-                            <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="service-block">
-                            <div class="pull-left bounce-in">
-                                <i class="fa fa-windows fa fa-md"></i>
-                            </div>
-                            <div class="media-body fade-up">
-                                <h3 class="media-heading">Windows Apps</h3>
-                                <p>Unfeeling so rapturous discovery he exquisite. Reasonably so middletons or impression by terminated. Old pleasure required removing elegance him had. Down she bore sing saw calm high.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="service-block">
-                            <div class="pull-left bounce-in">
-                                <i class="fa fa-android fa fa-md"></i>
-                            </div>
-                            <div class="media-body fade-up">
-                                <h3 class="media-heading">Facebook Marketing</h3>
-                                <p>The who arrival end how fertile enabled. Brother she add yet see minuter natural smiling article painted. Themselves at dispatched interested insensible am be prosperous reasonably it. </p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="service-block">
-                            <div class="pull-left bounce-in">
-                                <i class="fa fa-apple fa fa-md"></i>
-                            </div>
-                            <div class="media-body fade-up">
-                                <h3 class="media-heading">iOS Development</h3>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-                </div><!--/.row-->
-                <div class="gap"></div>
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="service-block">
-                            <div class="pull-left bounce-in">
-                                <i class="fa fa-linux fa fa-md"></i>
-                            </div>
-                            <div class="media-body fade-up">
-                                <h3 class="media-heading">Linux Development</h3>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="service-block">
-                            <div class="pull-left bounce-in">
-                                <i class="fa fa-dribbble fa fa-md"></i>
-                            </div>
-                            <div class="media-body fade-up">
-                                <h3 class="media-heading">Graphic Design</h3>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="service-block">
-                            <div class="pull-left bounce-in">
-                                <i class="fa fa-google-plus fa fa-md"></i>
-                            </div>
-                            <div class="media-body fade-up">
-                                <h3 class="media-heading">SEO Services</h3>
-                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-                            </div>
-                        </div>
-                    </div><!--/.col-md-4-->
-                </div><!--/.row-->
-            </div>
-            <div class="gap"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="center gap fade-down section-heading">
-                            <h2 class="main-title">Our Skills</h2>
-                            <hr>
-                            <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-            <div class="row">
-	                <div class="col-md-3">
-	                    <div class="tile-progress tile-red bounce-in">
-	                        <div class="tile-header">
-	                            <h3>Video Editing</h3>
-	                            <span>Our cutting room floor is messy.</span>
-	                        </div>
-	                        <div class="tile-progressbar">
-	                            <span data-fill="65.5%" style="width: 65.5%;"></span>
-	                        </div>
-	                        <div class="tile-footer">
-	                            <h4>
-	                                <span class="pct-counter counter">65.5</span>%
-	                            </h4>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-3">
-	                    <div class="tile-progress tile-cyan bounce-in">
-	                        <div class="tile-header">
-	                            <h3>Marketing</h3>
-	                            <span>How well we can sell you and your brand.</span>
-	                        </div>
-	                        <div class="tile-progressbar">
-	                            <span data-fill="98.5%" style="width: 98.5%;"></span>
-	                        </div>
-	                        <div class="tile-footer">
-	                            <h4>
-	                                <span class="pct-counter counter">98.5</span>%
-	                            </h4>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-3">
-	                    <div class="tile-progress tile-primary bounce-in">
-	                        <div class="tile-header">
-	                            <h3>Web Development</h3>
-	                            <span>We love servers and stuff.</span>
-	                        </div>
-	                        <div class="tile-progressbar">
-	                            <span data-fill="90%" style="width: 90%;"></span>
-	                        </div>
-	                        <div class="tile-footer">
-	                            <h4>
-	                                <span class="pct-counter counter">90</span>%
-	                            </h4>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-3">
-	                    <div class="tile-progress tile-pink bounce-in">
-	                        <div class="tile-header">
-	                            <h3>Coffee</h3>
-	                            <span>We done make good joe, though.</span>
-	                        </div>
-	                        <div class="tile-progressbar">
-	                            <span data-fill="10%" style="width: 10%;"></span>
-	                        </div>
-	                        <div class="tile-footer">
-	                            <h4>
-	                                <span class="pct-counter counter">10</span>%
-	                            </h4>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div><!--/.row-->
-	            <div class="gap"></div>
-        	</div>
-        </section>
-
-
-		<section id="single-quote" class="divider-section">
-	            <div class="container">
-	            	<div class="gap"></div>
-	                <div class="row">
-	                    <div class='col-md-offset-2 col-md-8 fade-up'>
-	                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-	                            <div class="carousel-inner">
-	                                <div class="item active">
-	                                    <blockquote>
-	                                        <div class="row">
-	                                            <div class="col-sm-3 text-center">
-	                                                <img class="img-responsive" src="http://placehold.it/400x400" style="width: 100px;height:100px;">
-	                                            </div>
-	                                            <div class="col-sm-9">
-	                                                <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
-	                                                <small>Someone famous</small>
-	                                            </div>
-	                                        </div>
-	                                    </blockquote>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="gap"></div>
-	      		</div>
-  		</section>
-
-        <section id="about-us" class="white">
-        	<div class="container">
-	            <div class="gap"></div>
-	            <div class="row">
-	                <div class="col-md-12">
-	                    <div class="center gap fade-down section-heading">
-	                        <h2 class="main-title">A Little About Us</h2>
-	                        <hr>
-	                        <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-md-10 col-md-offset-1 fade-up">
-	                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
-
-	                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.</p>
-	                </div>
-	                <div class="col-md-4 fade-up">
-
-	                </div>
-	            </div>
-               <div class="gap"></div>
-                <div class="row fade-up">
-                    <div class="col-md-6">
-                      	<div class="testimonial-list-item">
-                        <img class="pull-left img-responsive quote-author-list" src="http://placehold.it/400x400">
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Manager at <cite title="Source Title">Company</cite></small>
-                            </blockquote>
-                        </div>
-                        <div class="testimonial-list-item">
-                        <img class="pull-left img-responsive quote-author-list" src="http://placehold.it/400x400">
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Manager at <cite title="Source Title">Company</cite></small>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="testimonial-list-item">
-                        <img class="pull-left img-responsive quote-author-list" src="http://placehold.it/400x400">
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Manager at <cite title="Source Title">Company</cite></small>
-                            </blockquote>
-                        </div>
-                        <div class="testimonial-list-item">
-                        <img class="pull-left img-responsive quote-author-list" src="http://placehold.it/400x400">
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                <small>Manager at <cite title="Source Title">Company</cite></small>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-
-	            <div class="gap"></div>
-	            <div class="center gap fade-down section-heading">
-	                <h2 class="main-title">Meet The Team</h2>
-	                <hr>
-	                <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-	            </div>
-	            <div class="gap"></div>
-
-	            <div id="meet-the-team" class="row">
-	                <div class="col-md-3 col-xs-6">
-	                    <div class="center team-member">
-	                        <img class="img-responsive img-thumbnail bounce-in" src="http://placehold.it/400x400" alt="">
-	                        <div class="team-content fade-up">
-	                            <h5>Daniel Jones<small class="role muted">Web Design</small></h5>
-	                            <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-	                            <a class="btn btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-	                        </div>
-	                    </div>
-	                </div>
-
-	                <div class="col-md-3 col-xs-6">
-	                    <div class="center team-member">
-	                        <img class="img-responsive img-thumbnail bounce-in" src="http://placehold.it/400x400" alt="">
-	                        <div class="team-content fade-up">
-	                            <h5>John Smith<small class="role muted">Marketing Director</small></h5>
-	                            <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-	                            <a class="btn btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-3 col-xs-6">
-	                    <div class="center team-member">
-	                        <img class="img-responsive img-thumbnail bounce-in" src="http://placehold.it/400x400" alt="">
-	                        <div class="team-content fade-up">
-	                            <h5>Dave Gorman<small class="role muted">Web Design</small></h5>
-	                            <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-	                            <a class="btn btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-3 col-xs-6">
-	                    <div class="center team-member">
-	                        <img class="img-responsive img-thumbnail bounce-in" src="http://placehold.it/400x400" alt="">
-	                        <div class="team-content fade-up">
-	                            <h5>Steve Smith<small class="role muted">Sales Assistant</small></h5>
-	                            <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
-	                            <a class="btn btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div><!--/#meet-the-team-->
-	            <div class="gap"></div>
-	            <div class="gap"></div>
-            </div>
-        </section>
-
-        <section id="stats" class="divider-section">
-            <div class="gap"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-xs-6">
-                        <div class="center bounce-in">
-                            <span class="stat-icon"><span class="pe-7s-timer bounce-in"></span></span>
-                            <h1><span class="counter">246000</span></h1>
-                            <h3>HOURS SAVED</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-6">
-                        <div class="center bounce-in">
-                            <span class="stat-icon"><span class="pe-7s-light bounce-in"></span></span>
-                            <h1><span class="counter">16875</span></h1>
-                            <h3>FRESH IDEAS</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-6">
-                        <div class="center bounce-in">
-                            <span class="stat-icon"><span class="pe-7s-graph1 bounce-in"></span></span>
-                            <h1><span class="counter">99999999</span></h1>
-                            <h3>HUGE PROFIT</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-6">
-                        <div class="center bounce-in">
-                            <span class="stat-icon"><span class="pe-7s-box2 bounce-in"></span></span>
-                            <h1><span class="counter">54875</span></h1>
-                            <h3>THINGS IN BOXES</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gap"></div>
-        </section>
-
-        <section id="portfolio" class="white">
-       		<div class="container">
-	        	<div class="gap"></div>
-		        	<div class="center gap fade-down section-heading">
-		                <h2 class="main-title">Examples Of Excellence</h2>
-		                <hr>
-		                <p>She evil face fine calm have now. Separate screened he outweigh of distance landlord.</p>
-		            </div>
-	                <ul class="portfolio-filter fade-down center">
-	                    <li><a class="btn btn-outlined btn-primary active" href="#" data-filter="*">All</a></li>
-	                    <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".apps">Apps</a></li>
-	                    <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".nature">Nature</a></li>
-	                    <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".design">Design</a></li>
-	                </ul><!--/#portfolio-filter-->
-
-	                <ul class="portfolio-items col-3 isotope fade-up">
-	                    <li class="portfolio-item apps isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item joomla nature isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item bootstrap design isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item joomla design apps isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item joomla apps isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item wordpress nature isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item joomla design apps isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item joomla nature isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                    <li class="portfolio-item wordpress design isotope-item">
-	                        <div class="item-inner">
-	                            <img src="http://placehold.it/800x600" alt="">
-	                            <h5>Lorem ipsum dolor sit amet</h5>
-	                            <div class="overlay">
-	                                <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-	                            </div>
-	                        </div>
-	                    </li><!--/.portfolio-item-->
-	                </ul>
-                </div>
-            </section>
-
-            <section id="testimonial-carousel" class="divider-section">
-            <div class="gap"></div>
-	            <div class="container">
-	                <div class="row">
-                    	<div class="center gap fade-down section-heading">
-                            <h2 class="main-title">What They Have Been Saying</h2>
-                            <hr>
-                            <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-                            <div class="gap"></div>
-                        </div>
-	                    <div class='col-md-offset-2 col-md-8 fade-up'>
-	                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-	                            <!-- Bottom Carousel Indicators -->
-	                            <ol class="carousel-indicators">
-	                                <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-	                                <li data-target="#quote-carousel" data-slide-to="1"></li>
-	                                <li data-target="#quote-carousel" data-slide-to="2"></li>
-	                            </ol>
-	                            <!-- Carousel Slides / Quotes -->
-	                            <div class="carousel-inner">
-	                              <!-- Quote 1 -->
-	                                <div class="item active">
-	                                    <blockquote>
-	                                        <div class="row">
-	                                            <div class="col-sm-3 text-center">
-	                                                <img class="img-responsive" src="http://placehold.it/400x400" style="width: 100px;height:100px;">
-	                                            </div>
-	                                            <div class="col-sm-9">
-	                                                <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
-	                                                <small>Someone famous</small>
-	                                            </div>
-	                                        </div>
-	                                    </blockquote>
-	                                </div>
-	                                <!-- Quote 2 -->
-	                                <div class="item">
-	                                    <blockquote>
-	                                        <div class="row">
-	                                            <div class="col-sm-3 text-center">
-	                                                <img class="img-responsive" src="http://placehold.it/400x400" style="width: 100px;height:100px;">
-	                                            </div>
-	                                            <div class="col-sm-9">
-	                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor nec lacus ut tempor. Mauris.</p>
-	                                                <small>Someone famous</small>
-	                                            </div>
-	                                        </div>
-	                                    </blockquote>
-	                                </div>
-	                                <!-- Quote 3 -->
-	                                <div class="item">
-	                                    <blockquote>
-	                                        <div class="row">
-	                                            <div class="col-sm-3 text-center">
-	                                                <img class="img-responsive" src="http://placehold.it/400x400" style="width: 100px;height:100px;">
-	                                            </div>
-	                                            <div class="col-sm-9">
-	                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum elit in arcu blandit, eget pretium nisl accumsan. Sed ultricies commodo tortor, eu pretium mauris.</p>
-	                                                <small>Someone famous</small>
-	                                            </div>
-	                                        </div>
-	                                    </blockquote>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="gap"></div>
-	      		</div>
-      		</section>
-
-            <section id="blog" class="white">
-                <div class="container">
-                    <div class="center gap fade-down section-heading">
-                   		<div class="gap"></div>
-                        <h2 class="main-title">From The Blog</h2>
-                        <hr>
-                        <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-                    </div>
-                    <div class="gap"></div>
-                    <div class="row">
-	                    <div class="col-md-4">
-	                        <div class="post">
-	                            <div class="post-img-content">
-	                                <img src="http://placehold.it/800x600" class="img-responsive" />
-	                                <div class="overlay">
-	                                    <a class="preview btn btn-outlined btn-primary" href="#"><i class="fa fa-link"></i></a>
-	                                </div>
-	                            </div>
-	                            <div class="content">
-	                                <h2 class="post-title">Post Title</h2>
-	                                <div class="author">
-	                                    <i class="fa fa-user"></i> By <b>Author</b> | <i class="fa fa-clock-o"></i> <time datetime="2014-01-20">April 11th, 2014</time>
-	                                </div>
-	                                <div>
-	                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-	                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-	                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-	                                </div>
-	                                <div class="read-more-wrapper">
-	                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-md-4">
-	                        <div class="post">
-	                            <div class="post-img-content">
-	                                <img src="http://placehold.it/800x600" class="img-responsive" />
-	                                <div class="overlay">
-	                                    <a class="preview btn btn-outlined btn-primary" href="#"><i class="fa fa-link"></i></a>
-	                                </div>
-	                            </div>
-	                            <div class="content">
-	                                <h2 class="post-title">Post Title</h2>
-	                                <div class="author">
-	                                    <i class="fa fa-user"></i> By <b>Author</b> | <i class="fa fa-clock-o"></i> <time datetime="2014-01-20">April 11th, 2014</time>
-	                                </div>
-	                                <div>
-	                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-	                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-	                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-	                                </div>
-	                                <div class="read-more-wrapper">
-	                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-md-4">
-	                        <div class="post">
-	                            <div class="post-img-content">
-	                                <img src="http://placehold.it/800x600" class="img-responsive" />
-	                                <div class="overlay">
-	                                    <a class="preview btn btn-outlined btn-primary" href="#"><i class="fa fa-link"></i></a>
-	                                </div>
-	                            </div>
-	                            <div class="content">
-	                                <h2 class="post-title">Post Title</h2>
-	                                <div class="author">
-	                                    <i class="fa fa-user"></i> By <b>Author</b> | <i class="fa fa-clock-o"></i> <time datetime="2014-01-20">April 11th, 2014</time>
-	                                </div>
-	                                <div>
-	                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-	                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-	                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-	                                </div>
-	                                <div class="read-more-wrapper">
-	                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-                    </div>
-                    <div class="gap"></div>
-                    <div class="row">
-	                    <div class="col-md-4">
-	                        <div class="post">
-	                            <div class="post-img-content">
-	                                <img src="http://placehold.it/800x600" class="img-responsive" />
-	                                <div class="overlay">
-	                                    <a class="preview btn btn-outlined btn-primary" href="#"><i class="fa fa-link"></i></a>
-	                                </div>
-	                            </div>
-	                            <div class="content">
-	                                <h2 class="post-title">Post Title</h2>
-	                                <div class="author">
-	                                    <i class="fa fa-user"></i> By <b>Author</b> | <i class="fa fa-clock-o"></i> <time datetime="2014-01-20">April 11th, 2014</time>
-	                                </div>
-	                                <div>
-	                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-	                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-	                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-	                                </div>
-	                                <div class="read-more-wrapper">
-	                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-md-4">
-	                        <div class="post">
-	                            <div class="post-img-content">
-	                                <img src="http://placehold.it/800x600" class="img-responsive" />
-	                                <div class="overlay">
-	                                    <a class="preview btn btn-outlined btn-primary" href="#"><i class="fa fa-link"></i></a>
-	                                </div>
-	                            </div>
-	                            <div class="content">
-	                                <h2 class="post-title">Post Title</h2>
-	                                <div class="author">
-	                                    <i class="fa fa-user"></i> By <b>Author</b> | <i class="fa fa-clock-o"></i> <time datetime="2014-01-20">April 11th, 2014</time>
-	                                </div>
-	                                <div>
-	                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-	                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-	                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-	                                </div>
-	                                <div class="read-more-wrapper">
-	                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-md-4">
-	                        <div class="post">
-	                            <div class="post-img-content">
-	                                <img src="http://placehold.it/800x600" class="img-responsive" />
-	                                <div class="overlay">
-	                                    <a class="preview btn btn-outlined btn-primary" href="#"><i class="fa fa-link"></i></a>
-	                                </div>
-	                            </div>
-	                            <div class="content">
-	                                <h2 class="post-title">Post Title</h2>
-	                                <div class="author">
-	                                    <i class="fa fa-user"></i> By <b>Author</b> | <i class="fa fa-clock-o"></i> <time datetime="2014-01-20">April 11th, 2014</time>
-	                                </div>
-	                                <div>
-	                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-	                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-	                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-	                                </div>
-	                                <div class="read-more-wrapper">
-	                                    <a href="#" class="btn btn-outlined btn-primary">Read more</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-                    </div>
-                    <div class="gap"></div>
-                </div>
-       		</section>
-
-            <section id="pricing" class="white">
-                <div class="container">
-                    <div class="center gap fade-down section-heading">
-                        <h2 class="main-title">So, How Much?</h2>
-                        <hr>
-                        <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-                    </div>
-                    <div class="gap"></div>
-                    <div id="pricing-table" class="row">
-                        <div class="col-md-3 col-xs-6 flip-in">
-                            <ul class="plan plan1">
-                                <li class="plan-name">
-                                    <h3>Basic</h3>
-                                </li>
-                                <li class="plan-price">
-                                    <div>
-                                        <span class="price"><sup>$</sup>10</span>
-                                        <small>month</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>5GB</strong> Storage
-                                </li>
-                                <li>
-                                    <strong>1GB</strong> RAM
-                                </li>
-                                <li>
-                                    <strong>400GB</strong> Bandwidth
-                                </li>
-                                <li>
-                                    <strong>10</strong> Email Address
-                                </li>
-                                <li>
-                                    <strong>Forum</strong> Support
-                                </li>
-                                <li class="plan-action">
-                                    <a href="#" class="btn btn-outlined btn-primary btn-md btn-white">Signup</a>
-                                </li>
-                            </ul>
-                        </div><!--/.col-md-3-->
-                        <div class="col-md-3 col-xs-6 flip-in">
-                            <ul class="plan plan2 featured">
-                                <li class="plan-name">
-                                    <h3>Standard</h3>
-                                </li>
-                                <li class="plan-price">
-                                    <div>
-                                        <span class="price"><sup>$</sup>20</span>
-                                        <small>month</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>5GB</strong> Storage
-                                </li>
-                                <li>
-                                    <strong>1GB</strong> RAM
-                                </li>
-                                <li>
-                                    <strong>400GB</strong> Bandwidth
-                                </li>
-                                <li>
-                                    <strong>10</strong> Email Address
-                                </li>
-                                <li>
-                                    <strong>Forum</strong> Support
-                                </li>
-                                <li class="plan-action">
-                                    <a href="#" class="btn btn-outlined btn-primary btn-md">Signup</a>
-                                </li>
-                            </ul>
-                        </div><!--/.col-md-3-->
-                        <div class="col-md-3 col-xs-6 flip-in">
-                            <ul class="plan plan3">
-                                <li class="plan-name">
-                                    <h3>Advanced</h3>
-                                </li>
-                                <li class="plan-price">
-                                    <div>
-                                        <span class="price"><sup>$</sup>40</span>
-                                        <small>month</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>50GB</strong> Storage
-                                </li>
-                                <li>
-                                    <strong>8GB</strong> RAM
-                                </li>
-                                <li>
-                                    <strong>1024GB</strong> Bandwidth
-                                </li>
-                                <li>
-                                    <strong>Unlimited</strong> Email Address
-                                </li>
-                                <li>
-                                    <strong>Forum</strong> Support
-                                </li>
-                                <li class="plan-action">
-                                    <a href="#" class="btn btn-outlined btn-primary btn-md btn-white">Signup</a>
-                                </li>
-                            </ul>
-                        </div><!--/.col-md-3-->
-                        <div class="col-md-3 col-xs-6 flip-in">
-                            <ul class="plan plan4">
-                                <li class="plan-name">
-                                    <h3>Mighty</h3>
-                                </li>
-                                <li class="plan-price">
-                                    <div>
-                                        <span class="price"><sup>$</sup>100</span>
-                                        <small>month</small>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>50GB</strong> Storage
-                                </li>
-                                <li>
-                                    <strong>8GB</strong> RAM
-                                </li>
-                                <li>
-                                    <strong>1024GB</strong> Bandwidth
-                                </li>
-                                <li>
-                                    <strong>Unlimited</strong> Email Address
-                                </li>
-                                <li>
-                                    <strong>Forum</strong> Support
-                                </li>
-                                <li class="plan-action">
-                                    <a href="#" class="btn btn-outlined btn-primary btn-md btn-white">Signup</a>
-                                </li>
-                            </ul>
-                        </div><!--/.col-md-3-->
-                    </div>
-                    <div class="gap"></div>
-                </div>
-            </section>
-
-			
-
-            <section id="contact" class="white">
-                <div class="container">
-                	<div class="gap"></div>
-                    <div class="center gap fade-down section-heading">
-                        <h2 class="main-title">Get In Touch</h2>
-                        <hr>
-                        <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-                    </div>
-                    <div class="gap"></div>
-                    <div class="row">
-                        <div class="col-md-4 fade-up">
-                            <h3>Contact Information</h3>
-                            <p><span class="icon icon-home"></span>Time Square, New York<br/>
-                                <span class="icon icon-phone"></span>+36 65984 405<br/>
-                                <span class="icon icon-mobile"></span>+36 65984 405<br/>
-                                <span class="icon icon-envelop"></span> <a href="#">email@infinityteam.com</a> <br/>
-                                <span class="icon icon-twitter"></span> <a href="#">@infinityteam.com</a> <br/>
-                                <span class="icon icon-facebook"></span> <a href="#">Infinity Agency</a> <br/>
-                            </p>
-                        </div><!-- col -->
-
-                        <div class="col-md-8 fade-up">
-                            <h3>Drop Us A Message</h3>
+                    <div class="col-md-3" style="margin-top: 20px">
+{#                        <center><b style="font-size: 20px; ">用户基本信息录入</b></center>#}
+                        <center><center style="width: 250px"><img src="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/cs4.png" style="display: block;
+                         " class="img-responsive "></center></center>
+                        <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+  <div id="innerdiv" style="position:absolute;">
+    <img id="bigimg" src="" />
+  </div></div>
+                                            <div class="col-md-12" style="margin-top: 15px">
+                        <center><div id="ui_setup"><b>性别：</b>
+    <select style=" text-align:center;text-align-last:center;border:solid;width:178px;height: 28px;border-color: #e0e0e0;border-radius:10px;border-width:1px;outline: none;BACKGROUND-COLOR: transparent;font-size: 12px" id="XB" oninput="NEED();Calculation()" onchange="Change_NL_Option()">
+        <option value="男">男</option>
+        <option value="女">女</option>
+        <option value="婴儿">婴儿</option>
+        <option value="孕妇（早）">孕妇（早）</option>
+        <option value="孕妇（中）">孕妇（中）</option>
+        <option value="孕妇（晚）">孕妇（晚）</option>
+        <option value="母乳">母乳</option>
+    </select>
                             <br>
-                            <br>
-                            <div id="message"></div>
-                            <form method="post" action="sendemail.php" id="contactform">
-                                <input type="text" name="name" id="name" placeholder="Name" />
-                                <input type="text" name="email" id="email" placeholder="Email" />
-                                <input type="text" name="website" id="website" placeholder="Website" />
-                                <textarea name="comments" id="comments" placeholder="Comments"></textarea>
-                                <input class="btn btn-outlined btn-primary" type="submit" name="submit" value="Submit" />
-                            </form>
-                        </div><!-- col -->
-                    </div><!-- row -->
-                    <div class="gap"></div>
-                </div>
-            </section>
+    <b>年龄：</b>
+    <select style="text-align:center;text-align-last:center;margin-top: 15px;border:solid;width:178px;height: 28px;border-color: #e0e0e0;border-radius:10px;border-width:1px;outline: none;BACKGROUND-COLOR: transparent;font-size: 12px;" id="NL" oninput="NEED();Calculation()">
+        <option value="18~49岁" id="C1">18~49岁</option>
+        <option value="1岁" id="C2">1岁</option>
+        <option value="2岁" id="C3">2岁</option>
+        <option value="3岁" id="C4">3岁</option>
+        <option value="4岁" id="C5">4岁</option>
+        <option value="5岁" id="C6">5岁</option>
+        <option value="6岁" id="C7">6岁</option>
+        <option value="7岁" id="C8">7岁</option>
+        <option value="8岁" id="C9">8岁</option>
+        <option value="9岁" id="C10">9岁</option>
+        <option value="10岁" id="C11">10岁</option>
+        <option value="11~13岁" id="C12">11~13岁</option>
+        <option value="14~17岁" id="C13">14~17岁</option>
+        <option value="50~64岁" id="C14">50~64岁</option>
+        <option value="65~79岁" id="C15">65~79岁</option>
+        <option value="80岁以上" id="C16">80岁以上</option>
+{#        <option value="1月" id="C17" style='display:none'>1月</option>#}
+{#        <option value="2月" id="C18" style='display:none'>2月</option>#}
+{#        <option value="3月" id="C19" style='display:none'>3月</option>#}
+{#        <option value="4月" id="C20" style='display:none'>4月</option>#}
+{#        <option value="5月" id="C21" style='display:none'>5月</option>#}
+{#        <option value="6月" id="C22" style='display:none'>6月</option>#}
+{#        <option value="7月" id="C23" style='display:none'>7月</option>#}
+{#        <option value="8月" id="C24" style='display:none'>8月</option>#}
+{#        <option value="9月" id="C25" style='display:none'>9月</option>#}
+{#        <option value="10月" id="C26" style='display:none'>10月</option>#}
+{#        <option value="11月" id="C27" style='display:none'>11月</option>#}
+    </select>
+</div>
+
+<div class="ui-widget">
+    <center><span style="font-size: 10px;display:block">本页面仅支持部分食物的查询。</span>
+    <span style="font-size: 10px;display:block">（请输入：肉、菜、籽、鱼、果等关键字进行体验）</span>
+    <span style="font-size: 10px;display:block">完整体验请微信扫码本页面下方小程序二维码</span></center>
+{#    <span style="font-size: 10px;display:block">（吃啥日记）</span>#}
+    <input  id="tags" placeholder="请输入食物种类" style="text-align:center;text-align-last:center;font-size: 12px;outline: none;border:solid;width:190px;height: 24px;border-color: #e0e0e0;border-width:1px;BACKGROUND-COLOR: transparent;"><button style="height: 24px;outline: none;border:solid;border-color: #e0e0e0;border-width:1px;BACKGROUND-COLOR: transparent;font-size: 12px;border-left: none;" id="B1" onclick="add(tags.value);Calculation()">添加</button>
+    <div style="margin-top: 15px"><b>所选择的食物(g)</b></div>
+</div>
+<!--<button onclick="Calculation()">查看</button>-->
+<div id="ui_sel" style="width: 232px">
+    <table id="Table" style="width: 215px">
+    </table>
+</div></center>
+                    </div>
+                    </div>
+                    <div class="col-md-9" style="margin-top: 20px">
+                        <div style="font-size: 12px;margin-top: 35px;text-align: center">*结果中显示的百分比为每日该营养素达标率,维生素A显示为A,异亮氨酸显示为异亮,以此类推</div>
+                        <div class="macroNutrient">
+                            <div class="col-md-12" >
+                                    <div class="col-md-6" style="margin-left: -15px;">
+
+                                        <div id='kll'>
+                                        <div><h4 style="margin-top: 26px;">卡路里</h4></div>
+                                        <div id="Calculation_num">0kcal</div>
+                                        <div id="Calculation_k" style="border:solid;width:90px;height: 8px;border-color: #aaaaaa;border-radius:10px;border-width:1px;"><div id="X1"></div></div>
+                                        <div id="Y1">0%</div>
+                                        <div id="proteins_K">
+                                        <div style="margin-left: -10px"><h4 style="margin-top: 26px">蛋白质</h4></div>
+                                        <div id="proteins_num">0μg</div>
+                                        <div  id="proteins_num_KK" style="border:solid;width:90px;height: 8px;border-color: #aaaaaa;border-radius:10px;border-width:1px;"><div id="X2"></div></div>
+                                        <div id="Y2">0%</div>
+                                        </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6" style="margin-left: -15px">
+
+                                        <div id="carbohydrates_K">
+                                        <div><h4 style="margin-top:26px">碳水化合物</h4></div>
+                                        <div id="carbohydrates_num">0μg</div>
+                                        <div id="carbohydrates_KK" style="border:solid;width:90px;height: 8px;border-color: #aaaaaa;border-radius:10px;border-width:1px;"><div id="X3"></div></div>
+                                        <div id="Y3">0%</div>
+                                            <div id="fat_K">
+                                            <div style="margin-left: -10px"><h4 style="margin-top: 26px;">脂肪</h4></div>
+                                            <div id="fat_num">0μg</div>
+                                            <div id="fat_KK" style="border:solid;width:90px;height: 8px;border-color: #aaaaaa;border-radius:10px;border-width:1px;margin-top: -6px;margin-left: -10px"><div id="X4"></div></div>
+                                            <div id="Y4">0%</div>
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                    </div>
+
+                        <div class="col-md-4 col-sm-12" style="margin-top: 20px"><center><h4>矿物质</h4></center>
+
+                                <div class="S1">钙
+                                <div id="Calcium_KK" class="S2"><div id="X5"></div></div>
+                                <div id="Y5">0%</div>
+                                <div id="Calcium_num">0μg</div>
+                                </div>
+
+                                <div class="S1">氯
+                                <div id="Chloride_KK" class="S2"><div id="X6"></div></div>
+                                <div id="Y6">0%</div>
+                                <div id="Chloride_num">0μg</div>
+                                </div>
+
+                                <div class="S1">铬
+                                <div id="Chromium_KK" class="S2"><div id="X7"></div></div>
+                                <div id="Y7">0%</div>
+                                <div id="Chromium_num" >0μg</div>
+                                </div>
+
+                                <div class="S1">铜
+                                <div id="Copper_KK" class="S2"><div id="X8"></div></div>
+                                <div id="Y8">0%</div>
+                                <div id="Copper_num">0μg</div>
+                                </div>
+
+                                <div class="S1">碘
+                                <div id="Iodine_KK" class="S2"><div id="X9"></div></div>
+                                <div id="Y9" class="S3">0%</div>
+                                <div id="Iodine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">铁
+                                <div id="Iron_KK" class="S2"><div id="X10"></div></div>
+                                <div id="Y10" class="S3">0%</div>
+                                <div id="Iron_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">镁
+                                <div id="Magnesium_KK" class="S2"><div id="X11"></div></div>
+                                <div id="Y11" class="S3">0%</div>
+                                <div id="Magnesium_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">锰
+                                <div id="Manganese_KK" class="S2"><div id="X12"></div></div>
+                                <div id="Y12" class="S3">0%</div>
+                                <div id="Manganese_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">钼
+                                <div id="Molybdenum_KK" class="S2"><div id="X13"></div></div>
+                                <div id="Y13" class="S3">0%</div>
+                                <div id="Molybdenum_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">磷
+                                <div id="Phosphorus_KK" class="S2"><div id="X14"></div></div>
+                                <div id="Y14" class="S3">0%</div>
+                                <div id="Phosphorus_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">钾
+                                <div id="Potassium_KK" class="S2"><div id="X15"></div></div>
+                                <div id="Y15" class="S3">0%</div>
+                                <div id="Potassium_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">硒
+                                <div id="Selenium_KK" class="S2"><div id="X16"></div></div>
+                                <div id="Y16" class="S3">0%</div>
+                                <div id="Selenium_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">钠
+                                <div id="Sodium_KK" class="S2"><div id="X17"></div></div>
+                                <div id="Y17" class="S3">0%</div>
+                                <div id="Sodium_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">锌
+                                <div id="Zinc_KK" class="S2"><div id="X18"></div></div>
+                                <div id="Y18" class="S3">0%</div>
+                                <div id="Zinc_num" class="S4">0μg</div>
+                                </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12" style="margin-top: 20px"><center><h4>维生素</h4></center>
+
+                                <div class="S1">A
+                                <div id="VitaminA_KK" class="S2"><div id="X19"></div></div>
+                                <div id="Y19" class="S3">0%</div>
+                                <div id="VitaminA_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">B1
+                                <div id="VitaminB1_KK" class="S2" style="margin-left: 35px"><div id="X20"></div></div>
+                                <div id="Y20" class="S3">0%</div>
+                                <div id="VitaminB1_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">B2
+                                <div id="VitaminB2_KK" class="S2" style="margin-left: 32px"><div id="X21"></div></div>
+                                <div id="Y21" class="S3">0%</div>
+                                <div id="VitaminB2_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">B3
+                                <div id="VitaminB3_KK" class="S2" style="margin-left: 32px"><div id="X22"></div></div>
+                                <div id="Y22" class="S3">0%</div>
+                                <div id="VitaminB3_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">B5
+                                <div id="VitaminB5_KK" class="S2" style="margin-left: 32px"><div id="X23"></div></div>
+                                <div id="Y23" class="S3">0%</div>
+                                <div id="VitaminB5_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">B6
+                                <div id="VitaminB6_KK" class="S2" style="margin-left: 32px"><div id="X24"></div></div>
+                                <div id="Y24" class="S3">0%</div>
+                                <div id="VitaminB6_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">B9
+                                <div id="VitaminB9_KK" class="S2" style="margin-left: 32px"><div id="X26"></div></div>
+                                <div id="Y26" class="S3">0%</div>
+                                <div id="VitaminB9_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">B12
+                                <div id="VitaminB12_KK" class="S2" style="margin-left: 26px"><div id="X27"></div></div>
+                                <div id="Y27" class="S3">0%</div>
+                                <div id="VitaminB12_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">C
+                                <div id="VitaminC_KK" class="S2" style="margin-left: 40px"><div id="X28"></div></div>
+                                <div id="Y28" class="S3">0%</div>
+                                <div id="VitaminC_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">E
+                                <div id="VitaminE_KK" class="S2" style="margin-left: 42px"><div id="X29"></div></div>
+                                <div id="Y29" class="S3">0%</div>
+                                <div id="VitaminE_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">K
+                                <div id="VitaminK_KK" class="S2" style="margin-left: 42px"><div id="X30"></div></div>
+                                <div id="Y30" class="S3">0%</div>
+                                <div id="VitaminK_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">胆碱
+                                <div id="Choline_KK" class="S2" style="margin-left: 19px"><div id="X31"></div></div>
+                                <div id="Y31" class="S3">0%</div>
+                                <div id="Choline_num" class="S4">0μg</div>
+                                </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12" style="margin-top: 20px"><center><h4>氨基酸</h4></center>
+
+                                <div class="S1">异亮
+                                <div id="Isoleucine_KK" class="S2" style="margin-left: 24px"><div id="X32"></div></div>
+                                <div id="Y32" class="S3">0%</div>
+                                <div id="Isoleucine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">组
+                                <div id="Histidine_KK" class="S2"><div id="X33"></div></div>
+                                <div id="Y33" class="S3">0%</div>
+                                <div id="Histidine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">亮
+                                <div id="Leucine_KK" class="S2"><div id="X34"></div></div>
+                                <div id="Y34" class="S3">0%</div>
+                                <div id="Leucine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">赖
+                                <div id="Lysine_KK" class="S2"><div id="X35"></div></div>
+                                <div id="Y35" class="S3">0%</div>
+                                <div id="Lysine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">蛋
+                                <div id="Methionine_KK" class="S2"><div id="X36"></div></div>
+                                <div id="Y36" class="S3">0%</div>
+                                <div id="Methionine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">苯丙
+                                <div id="Phenylalanine_KK" class="S2" style="margin-left: 24px"><div id="X37"></div></div>
+                                <div id="Y37" class="S3">0%</div>
+                                <div id="Phenylalanine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">色
+                                <div id="Tryptophan_KK" class="S2"><div id="X38"></div></div>
+                                <div id="Y38" class="S3">0%</div>
+                                <div id="Tryptophan_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">苏
+                                <div id="Threonine_KK" class="S2"><div id="X39"></div></div>
+                                <div id="Y39" class="S3">0%</div>
+                                <div id="Threonine_num" class="S4">0μg</div>
+                                </div>
+
+                                <div class="S1">缬
+                                <div id="Valine_KK" class="S2"><div id="X40"></div></div>
+                                <div id="Y40" class="S3">0%</div>
+                                <div id="Valine_num" class="S4">0μg</div>
+                                </div>
+{#                            <br>#}
+                            <div style="margin-left: 4px;margin-top: 44px;">
+                <b style="font-size: 12px">* 数据及算法来源：</b>
+                <span style="font-size: 12px;display:block">1）美国农业部USDA权威数据库</span>
+                <span  style="font-size: 12px;display:block">2）中国国家农业科学数据共享中心</span>
+                <span style="font-size: 12px;display:block">3）星移数字算法研究中心</span></div>
+                        </div>
+                    </div></div></div>
+
+                    <div class="container">
+
+                        <hr>
+                                            <center><b>商务合作，请通过下方联系方式咨询</b></center>
+                                <center><i class="fa fa-arrow-down fa" style="font-size: 36px;margin-top: 15px"></i></center>
+            </div>
+        </section>
         </div>
 
     <div id="footer-wrapper">
         <section id="bottom" class="">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 about-us-widget">
-                        <h4>Global Coverage</h4>
-                        <p>Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin.</p>
+{#                    <div class="col-md-4 about-us-widget">#}
+                    <div class="col-md-3 ">
+                        <h4>联系方式</h4>
+                        <a href="https://www.weibo.com/7190414450"><p><img src="../static/images/new/icon/wb3.png" style="width: 25px;height: 25px;margin-top: -5px ; margin-left: -3px">搜索:食神姬</p></a>
+                        <p class="fa fa-envelope">            cuicangjian@xingyidigital.com</p>
+                        <p class="fa fa-map-marker" style="line-height:25px">            杭州市滨江区江虹路768号浙农科创园5号楼1203</p>
+
                     </div><!--/.col-md-3-->
 
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Company</h4>
-                        <div>
-                            <ul class="arrow">
-                                <li><a href="#">Company Overview</a></li>
-                                <li><a href="#">Meet The Team</a></li>
-                                <li><a href="#">Our Awesome Partners</a></li>
-                                <li><a href="#">Our Services</a></li>
-                            </ul>
-                        </div>
-                    </div><!--/.col-md-3-->
 
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Latest Articles</h4>
+                    <div class="col-md-3">
+                        <h4>小程序</h4>
                         <div>
+
                             <div class="media">
                                 <div class="pull-left">
-                                    <img class="widget-img" src="http://placehold.it/800x600" alt="">
+                                    <img class="widget-img pic" src="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/csrj-3.jpg" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <span class="media-heading"><a href="#">Blog Post A</a></span>
-                                    <small class="muted">Posted 14 April 2014</small>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img class="widget-img" src="http://placehold.it/800x600" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <span class="media-heading"><a href="#">Blog Post B</a></span>
-                                    <small class="muted">Posted 14 April 2014</small>
+                                    <span class="media-heading">吃啥日记</span>
+                                    <small class="muted">微信小程序二维码</small>
                                 </div>
                             </div>
                         </div>
                     </div><!--/.col-md-3-->
+                    <div class="col-md-3">
+                        <h4>公众号</h4>
+                        <div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <img class="widget-img pic" src="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/ssjgzh2-3.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <span class="media-heading">公众号</span>
+                                    <small class="muted">公众号二维码</small>
+                                </div>
+                            </div>
 
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Come See Us</h4>
-                        <address>
-                            <strong>Ace Towers</strong><br>
-                            New York Ave,<br>
-                            New York, 215648<br>
-                            <abbr title="Phone"><i class="fa fa-phone"></i></abbr> 546 840654 05
-                        </address>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <h4>微信</h4>
+                              <div class="media">
+                                <div class="pull-left">
+                                    <img class="widget-img pic" src="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/ssj.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <span class="media-heading">食神姬</span>
+                                    <small class="muted">食神姬微信二维码</small>
+                                </div>
+                            </div>
+
                     </div> <!--/.col-md-3-->
                 </div>
             </div>
@@ -1010,10 +551,11 @@
         <footer id="footer" class="">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8">
-                        &copy; 2019 Your Site Name. All Rights Reserved. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                    <div class="col-sm-10" style="font-size: 15px">
+                        <center><a>浙ICP备19021456号-2 Copyright Copyright &copy; 2019-2019 SHINE Digital Co.,LTD All Rights Reserved</a></center>
+                        <center><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802010541" ><img src="https://eat-what.oss-cn-hangzhou.aliyuncs.com/gw/ba.png" style="margin-top: -3px"><p style="display: inline;margin-left: 5px;">浙公网安备 33010802010541号</p></a></center>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <ul class="pull-right">
                             <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
                         </ul>
@@ -1024,10 +566,30 @@
     </div>
 
 
-    <script src="../static/js/plugins.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/jquery.prettyPhoto.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWDPCiH080dNCTYC-uprmLOn2mt2BMSUk&amp;sensor=true"></script>
-    <script src="../static/js/init.js"></script>
+{#    <script src="../static/js/plugins.js"></script>#}
+    <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"../static/js/plugins.js\"></sc"+"ript>")
+    </script>
+{#    <script src="../static/js/bootstrap.min.js"></script>#}
+    <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"../static/js/bootstrap.min.js\"></sc"+"ript>")
+    </script>
+{#    <script src="../static/js/jquery.prettyPhoto.js"></script>#}
+    <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"../static/js/jquery.prettyPhoto.js\"></sc"+"ript>")
+    </script>
+
+{#    <script src="../static/js/init.js"></script>#}
+    <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"../static/js/init.js\"></sc"+"ript>")
+    </script>
+{#    <script src="../static/js/jquery-ui.js"></script>#}
+    <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"../static/js/jquery-ui.js\"></sc"+"ript>")
+    </script>
+{#    <script src="../static/js/UI.js"></script>#}
+    <script type="text/javascript">
+    document.write("<scr"+"ipt src=\"../static/js/UI.js\"></sc"+"ript>")
+    </script>
 </body>
 </html>

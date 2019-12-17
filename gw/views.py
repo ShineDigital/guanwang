@@ -26,3 +26,15 @@ def project_item(request):
 
 def blog_item(request):
     return render(request,'blog-item.html')
+
+def Intelligence_Assistant(request):
+    return render(request,'Intelligence-Assistant.html')
+
+def Optimization_Programme(request):
+    return render(request,'Optimization-Programme.html')
+
+def Digital_Presentation(request):
+    return render(request,'Digital-Presentation.html')
+
+def index_single_page(request):
+    return render(request,'index-single-page.html')

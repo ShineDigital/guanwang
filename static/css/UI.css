@@ -1,0 +1,1083 @@
+
+select {
+-moz-appearance:none;
+-webkit-appearance:none;
+background:url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+}
+select::-ms-expand { display: none; }
+
+
+
+.ui-autocomplete{
+    max-height:250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+.ui-widget{
+    /*position: fixed;*/
+    top:200px;
+    left:20px;
+    margin-top: 15px;
+
+
+}
+
+#ui_sel{
+    /*position: fixed;*/
+    /*top:260px;*/
+    /*left:20px;*/
+    max-height:231px;
+    /*width:280px;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#ui_setup{
+    /*position: fixed;*/
+    /*top:170px;*/
+    /*left:20px;*/
+}
+
+.S1{
+    /*display: inline;*/
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    /*justify-content: flex-end;*/
+
+
+    /*position:absolute;*/
+    /*left:0px;*/
+    /*float: left;*/
+}
+
+.S2{
+    border:solid;
+    width:100px;
+    height: 8px;
+    border-color: #aaaaaa;
+    border-radius:10px;
+    border-width:1px;
+    margin-top: 10px;
+    margin-left: 40px;
+    /*position: absolute;*/
+    /*position: relative;*/
+}
+
+.S3{
+    position:absolute;
+    right: 72px;
+}
+
+.S4{
+    position:absolute;
+    right: 0px;
+}
+
+.S5{
+    border:solid;
+    width:100px;
+    height: 8px;
+    border-color: #aaaaaa;
+    border-radius:10px;
+    border-width:1px;
+    /*background:green;*/
+    background-color: #92bde8;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.S5-2{
+    border:solid;
+    width:90px;
+    height: 8px;
+    border-color: #aaaaaa;
+    border-radius:10px;
+    border-width:1px;
+    /*background:green;*/
+    background-color: #92bde8;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.S6{
+    border:solid;
+    width:100px;
+    height: 8px;
+    border-color: #aaaaaa;
+    border-radius:10px;
+    border-width:1px;
+    /*background:red;*/
+    background-color: #e98286;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+.S6-2{
+    border:solid;
+    width:90px;
+    height: 8px;
+    border-color: #aaaaaa;
+    border-radius:10px;
+    border-width:1px;
+    /*background:red;*/
+    background-color: #e98286;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.S7{
+    border:solid;
+    height: 8px;
+    border-color: #aaaaaa;
+    border-radius:10px;
+    border-width:1px;
+    /*background: #00a0e9;*/
+    background-color: #9b9b9b;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+
+
+
+
+
+
+
+
+
+#kll{
+    /*position: fixed;*/
+    /*background: brown;*/
+    height: 58px;
+    /*width: 50%;*/
+    /*width: 190px;*/
+    /*height: 100px;*/
+    /*top:30px;*/
+    /*left: 350px;*/
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+#proteins_K{
+    position: absolute;
+    left: 210px;
+    /*background: brown;*/
+    /*width: 50%;*/
+    /*display: flex;*/
+    /*flex-wrap: nowrap;*/
+    /*flex-direction: row;*/
+    /*position: fixed;*/
+    /*background: brown;*/
+    /*width: 190px;*/
+    /*height: 100px;*/
+    /*top:30px;*/
+    /*left: 580px;*/
+    /*margin-left: 15px;*/
+}
+
+#Calculation_num{
+    /*position: fixed;*/
+    /*left: 453px;*/
+    /*top:57px;*/
+    /*background: fuchsia;*/
+    font-size: 14px;
+    position: absolute;
+    left:110px;
+    top: 24px;
+    /*margin-top: -35px;*/
+    /*margin-left: 135px;*/
+    /*font-size: 18px;*/
+
+    /*margin-top: -35px;*/
+    /*margin-left: 182px;*/
+    /*font-size: 18px;*/
+}
+
+#proteins_num{
+    /*position: fixed;*/
+    /*left: 683px;*/
+    /*top:57px;*/
+    /*margin-top: -35px;*/
+    /*margin-left: 134px;*/
+    position: absolute;
+    left: 83px;
+    top: 24px;
+    font-size: 14px;
+}
+
+#Calculation_k{
+    /*position: fixed;*/
+    /*left: 376px;*/
+    /*top:87px;*/
+    /*background: chocolate;*/
+    position: absolute;
+    top: 50px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+}
+
+#carbohydrates_K{
+    /*position: fixed;*/
+    /*left: 796px;*/
+    /*top:30px;*/
+    /*background-color: brown;*/
+    display: flex;
+    height: 58px;
+}
+
+#carbohydrates_num{
+    position: absolute;
+    left: 110px;
+    top:24px;
+    font-size: 14px;
+    /*margin-top: -35px;*/
+    /*margin-left: 134px;*/
+}
+
+#fat_K{
+    position: absolute;
+    left: 210px;
+    /*top:30px;*/
+}
+
+#fat_num{
+    position: absolute;
+    left: 83px;
+    top:24px;
+    font-size: 14px;
+    /*margin-top: -35px;*/
+    /*margin-left: 134px;*/
+}
+
+#Y1{
+    /*position: fixed;*/
+    /*left: 486px;*/
+    /*top:81px;*/
+    font-size: 14px;
+    position: absolute;
+    left: 110px;
+    top: 42px;
+    /*margin-top: -20px;*/
+    /*margin-left: 135px;*/
+
+    /*margin-top: -20px;*/
+    /*margin-left: 183px;*/
+}
+
+
+.macroNutrient{
+    /*position: fixed;*/
+    /*height: 150px;*/
+    /*width: 1100px;*/
+    /*left: 350px;*/
+    /*top: 10px;*/
+    /*background: #00a0e9;*/
+}
+
+.Minerals{
+    /*position: fixed;*/
+    /*left: 380px;*/
+    /*top: 150px;*/
+}
+
+.Vitamins{
+    position: fixed;
+    left: 660px;
+    top: 150px;
+}
+
+.Essential_Amino_Acids{
+    position: fixed;
+    left: 990px;
+    top: 150px;
+}
+
+.Essential_Fatty_Acids{
+    position: fixed;
+    left: 980px;
+    top: 480px;
+}
+
+
+#proteins_num_KK{
+    /*position: fixed;*/
+    /*top:87px;*/
+    /*left:600px;*/
+    /*margin-top: 30px;*/
+    /*margin-left: -53px;*/
+    position: absolute;
+    top:50px;
+    left:-10px;
+}
+
+#Y2{
+    /*position: fixed;*/
+    /*left: 716px;*/
+    /*top:81px;*/
+    /*margin-top: -20px;*/
+    /*margin-left: 135px;*/
+    position: absolute;
+    top: 42px;
+    left: 83px;
+    font-size: 14px;
+}
+
+#carbohydrates_KK{
+    position: absolute;
+    top:50px;
+    /*left:818px;*/
+}
+
+#Y3{
+    position: absolute;
+    left: 110px;
+    top:42px;
+    font-size: 14px;
+    /*margin-top: -20px;*/
+    /*margin-left: 135px;*/
+}
+
+#fat_KK{
+    /*position: fixed;*/
+    /*top:87px;*/
+    /*left:1068px;*/
+}
+
+#Y4{
+    position: absolute;
+    left: 83px;
+    top:42px;
+    font-size: 14px;
+    /*margin-top: -20px;*/
+    /*margin-left: 135px;*/
+}
+
+#Calcium_KK{
+    /*display: inline-block;*/
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:219px;*/
+    /*display: inline*/
+}
+
+#Y5{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:214px;*/
+    /*height: 20px;*/
+    /*width: 30px;*/
+    /*margin-top: -18px;*/
+    /*float: right;*/
+
+    /*margin-left: 10px;*/
+    /*display: inline;*/
+    position:absolute;
+    right: 72px;
+    /*top: auto;*/
+
+}
+
+#Calcium_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:214px;*/
+    /*margin-top: -20px;*/
+    /*display: inline;*/
+    /*float: right;*/
+    /*padding: 0;*/
+
+    /*margin-left: 10px;*/
+    position:absolute;
+    right: 0px;
+    /*top: auto;*/
+
+}
+
+#Chloride_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:251px;*/
+}
+
+#Y6{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:246px;*/
+    /*margin-left: 10px;*/
+    /*display: inline;*/
+    position:absolute;
+    right: 72px;
+    /*top: auto;*/
+}
+
+#Chloride_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:246px;*/
+    /*margin-left: 10px;*/
+    position:absolute;
+    right: 0px;
+    /*top: auto;*/
+}
+
+#Chromium_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:281.5px;*/
+}
+
+#Y7{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:276.5px;*/
+    position:absolute;
+    right: 72px;
+}
+
+#Chromium_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:276.5px;*/
+    position:absolute;
+    right: 0px;
+}
+
+#Copper_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:311.5px;*/
+}
+
+#Y8{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:306.5px;*/
+    position:absolute;
+    right: 72px;
+}
+
+#Copper_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:306.5px;*/
+    position:absolute;
+    right: 0px;
+}
+
+#Iodine_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:342px;*/
+}
+
+#Y9{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:337px;*/
+}
+
+#Iodine_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:337px;*/
+}
+
+#Iron_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:371px;*/
+}
+
+#Y10{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:366px;*/
+}
+
+#Iron_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:366px;*/
+}
+
+#Magnesium_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:402px;*/
+}
+
+#Y11{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:397px;*/
+}
+
+#Magnesium_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:397px;*/
+}
+
+#Manganese_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:432px;*/
+}
+
+#Y12{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:427px;*/
+}
+
+#Manganese_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:427px;*/
+}
+
+#Molybdenum_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:462px;*/
+}
+
+#Y13{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:457px;*/
+}
+
+#Molybdenum_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:457px;*/
+}
+
+#Phosphorus_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:492px;*/
+}
+
+#Y14{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:487px;*/
+}
+
+#Phosphorus_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:487px;*/
+}
+
+#Potassium_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:522px;*/
+}
+
+#Y15{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:517px;*/
+}
+
+#Potassium_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:517px;*/
+}
+
+#Selenium_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:552px;*/
+}
+
+#Y16{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:547px;*/
+}
+
+#Selenium_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:547px;*/
+}
+
+#Sodium_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:582.5px;*/
+}
+
+#Y17{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:577.5px;*/
+}
+
+#Sodium_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:577.5px;*/
+}
+
+#Zinc_KK{
+    /*position: fixed;*/
+    /*left: 405px;*/
+    /*top:612.5px;*/
+}
+
+#Y18{
+    /*position: fixed;*/
+    /*left: 515px;*/
+    /*top:607.5px;*/
+}
+
+#Zinc_num{
+    /*position: fixed;*/
+    /*left: 560px;*/
+    /*top:607.5px;*/
+}
+
+#VitaminA_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:219px;*/
+}
+
+#Y19{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:214px;*/
+}
+
+#VitaminA_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:214px;*/
+}
+
+#VitaminB1_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:251px;*/
+}
+
+#Y20{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:246px;*/
+}
+
+#VitaminB1_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:246px;*/
+}
+
+#VitaminB2_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:281.5px;*/
+}
+
+#Y21{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:276.5px;*/
+}
+
+#VitaminB2_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:276.5px;*/
+}
+
+#VitaminB3_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:311.5px;*/
+}
+
+#Y22{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:306.5px;*/
+}
+
+#VitaminB3_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:306.5px;*/
+}
+
+#VitaminB5_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:342px;*/
+}
+
+#Y23{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:337px;*/
+}
+
+#VitaminB5_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:337px;*/
+}
+
+#VitaminB6_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:371px;*/
+}
+
+#Y24{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:366px;*/
+}
+
+#VitaminB6_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:366px;*/
+}
+
+#VitaminB7_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:402px;*/
+}
+
+#Y25{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:397px;*/
+}
+
+#VitaminB7_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:397px;*/
+}
+
+#VitaminB9_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:432px;*/
+}
+
+#Y26{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:427px;*/
+}
+
+#VitaminB9_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:427px;*/
+}
+
+#VitaminB12_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:462px;*/
+}
+
+#Y27{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:457px;*/
+}
+
+#VitaminB12_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:457px;*/
+}
+
+#VitaminC_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:492px;*/
+}
+
+#Y28{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:487px;*/
+}
+
+#VitaminC_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:487px;*/
+}
+
+#VitaminE_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:522px;*/
+}
+
+#Y29{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:517px;*/
+}
+
+#VitaminE_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:517px;*/
+}
+
+#VitaminK_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:552px;*/
+}
+
+#Y30{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:547px;*/
+}
+
+#VitaminK_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:547px;*/
+}
+
+#Choline_KK{
+    /*position: fixed;*/
+    /*left: 745px;*/
+    /*top:582.5px;*/
+}
+
+#Y31{
+    /*position: fixed;*/
+    /*left: 855px;*/
+    /*top:577.5px;*/
+}
+
+#Choline_num{
+    /*position: fixed;*/
+    /*left: 900px;*/
+    /*top:577.5px;*/
+}
+
+#Isoleucine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:219px;*/
+}
+
+#Y32{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:214px;*/
+}
+
+#Isoleucine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:214px;*/
+}
+
+#Histidine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:251px;*/
+}
+
+#Y33{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:246px;*/
+}
+
+#Histidine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:246px;*/
+}
+
+#Leucine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:281.5px;*/
+}
+
+#Y34{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:276.5px;*/
+}
+
+#Leucine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:276.5px;*/
+}
+
+#Lysine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:311.5px;*/
+}
+
+#Y35{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:306.5px;*/
+}
+
+#Lysine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:306.5px;*/
+}
+
+#Methionine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:342px;*/
+}
+
+#Y36{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:337px;*/
+}
+
+#Methionine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:337px;*/
+}
+
+#Phenylalanine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:371px;*/
+}
+
+#Y37{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:366px;*/
+}
+
+#Phenylalanine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:366px;*/
+}
+
+#Tryptophan_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:402px;*/
+}
+
+#Y38{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:397px;*/
+}
+
+#Tryptophan_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:397px;*/
+}
+
+#Threonine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:432px;*/
+}
+
+#Y39{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:427px;*/
+}
+
+#Threonine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:427px;*/
+}
+
+#Valine_KK{
+    /*position: fixed;*/
+    /*left: 1065px;*/
+    /*top:462px;*/
+}
+
+#Y40{
+    /*position: fixed;*/
+    /*left: 1175px;*/
+    /*top:457px;*/
+}
+
+#Valine_num{
+    /*position: fixed;*/
+    /*left: 1220px;*/
+    /*top:457px;*/
+}
+
+#α_Linolenic_acid_KK{
+    position: fixed;
+    left: 1065px;
+    top:552px;
+}
+
+#Y41{
+    position: fixed;
+    left: 1175px;
+    top:547px;
+}
+
+#α_Linolenic_acid_num{
+    position: fixed;
+    left: 1220px;
+    top:547px;
+}
+
+#Linolenic_acid_KK{
+    position: fixed;
+    left: 1065px;
+    top:582.5px;
+}
+
+#Y42{
+    position: fixed;
+    left: 1175px;
+    top:577.5px;
+}
+
+#Linolenic_acid_num{
+    position: fixed;
+    left: 1220px;
+    top:577.5px;
+}
